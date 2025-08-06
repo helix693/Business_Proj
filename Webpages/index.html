@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="logo-container">
+                <!-- Replace 'logo.png' with your actual logo file in the Images folder -->
+                <img src="../Images/logo.png" alt="Logo" class="navbar-logo" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="products.html">Product</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main class="center-content">
+        <h1>Buisness Name</h1>
+        <div class="carousel">
+            <div class="carousel-track">
+                <img src="../Images/carousel1.jpg" alt="Slide 1" class="carousel-image" />
+                <img src="../Images/carousel2.jpg" alt="Slide 2" class="carousel-image" />
+                <img src="../Images/carousel3.jpg" alt="Slide 3" class="carousel-image" />
+            </div>
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
+        </div>
+    </main>
+    <!-- Main content goes here -->
+
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+    <script src="carousel.js"></script>
+</body>
+</html>
