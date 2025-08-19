@@ -1,3 +1,43 @@
+/* Footer styles */
+.site-footer {
+    width: 100%;
+    background: #0a2a6c;
+    color: #fff;
+    padding: 36px 0 24px 0;
+    margin-top: 40px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    font-family: inherit;
+    z-index: 100;
+}
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+.footer-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 18px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.footer-contact {
+    font-size: 1.1em;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+.footer-contact a {
+    color: #b3d4fc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-contact a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
 /* Carousel styles */
 .carousel {
     position: relative;
@@ -51,10 +91,16 @@
             margin-right: 0;
             margin-left: auto;
         }
-        .nav-links {
-            left: 0;
-            right: 0;
-        }
+            .nav-links {
+                left: unset !important;
+                right: 0 !important;
+                top: 90px !important;
+                text-align: right;
+            }
+            .nav-links a {
+                padding-left: 0 !important;
+                padding-right: 32px;
+            }
 
    /* transition: background 0.2s; */
 }
@@ -168,7 +214,50 @@ html, body {
 }
 
 .menu-toggle:checked ~ .nav-links {
+    display: none;
+}
+
+/* Overlay menu for mobile hamburger */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    z-index: 4000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+.mobile-menu-overlay.active {
     display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+.mobile-menu-links a {
+    color: #fff;
+    font-size: 2em;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.mobile-menu-links a:hover {
+    color: #FFD600;
+}
+
+body.menu-fade {
+    transition: opacity 0.4s;
+    opacity: 0.2;
 }
 
 @media (min-width: 600px) {
@@ -367,6 +456,11 @@ body{
     }
     .service-rate, .service-start {
         font-size: 1em;
+    }
+
+    /* Hide nav-links on mobile, use overlay instead */
+    .nav-links {
+        display: none !important;
     }
 }
 

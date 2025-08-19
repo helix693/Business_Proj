@@ -6,7 +6,7 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
     <header>
         <nav class="navbar">
             <input type="checkbox" id="menu-toggle" class="menu-toggle" />
@@ -27,7 +27,16 @@
         </nav>
 
     </header>
-    <main class="center-content">
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <div class="mobile-menu-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Services</a>
+                <a href="reviews.html">Reviews</a>
+            </div>
+        </div>
+    <main class="center-content" style="flex: 1 0 auto;">
         <h1>Buisness Name</h1>
         <div class="carousel">
             <div class="carousel-track">
@@ -42,9 +51,46 @@
     </main>
     <!-- Main content goes here -->
 
-    <footer>
-        <!-- Footer content goes here -->
+    <footer class="site-footer" style="flex-shrink: 0;">
+        <div class="footer-content">
+            <h2>Contact</h2>
+            <div class="footer-contact">
+                <div>Email: <a href="mailto:info@business.com">info@business.com</a></div>
+                <div>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></div>
+            </div>
+        </div>
     </footer>
-    <script src="JavaScript/carousel.js"></script>
+        <script src="JavaScript/carousel.js"></script>
+        <script>
+        // Mobile Hamburger Overlay Logic
+        const menuToggle = document.querySelector('.menu-toggle');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        const body = document.body;
+        const menuLinks = overlay.querySelectorAll('a');
+
+        function openMenu() {
+            overlay.classList.add('active');
+            body.classList.add('menu-fade');
+        }
+        function closeMenu() {
+            overlay.classList.remove('active');
+            body.classList.remove('menu-fade');
+            menuToggle.checked = false;
+        }
+
+        if (menuToggle && overlay) {
+            menuToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    openMenu();
+                } else {
+                    closeMenu();
+                }
+            });
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeMenu();
+            });
+            menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+        }
+        </script>
 </body>
 </html>

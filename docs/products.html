@@ -31,12 +31,21 @@
 
         </header>
 
+                <!-- Mobile Menu Overlay -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-links">
+                        <a href="index.html">Home</a>
+                        <a href="products.html">Services</a>
+                        <a href="reviews.html">Reviews</a>
+                    </div>
+                </div>
+
         <main class="service-main">
             <div class="service-cards-container">
                 <div class="service-card">
                     <div class="service-img-placeholder">
                         <!-- Replace with actual image if available -->
-                        <img src="Images/cleaning-placeholder.png" alt="Cleaning Service" class="service-img" />
+                        <img src="Images/service2.jpg" alt="Cleaning Service" class="service-img" />
                     </div>
                     <div class="service-info">
                         <h2 class="service-title">Cleaning</h2>
@@ -50,7 +59,7 @@
                 <div class="service-card">
                     <div class="service-img-placeholder">
                         <!-- Replace with actual image if available -->
-                        <img src="Images/painting-placeholder.png" alt="Painting Service" class="service-img" />
+                        <img src="Images/service1.jpg" alt="Painting Service" class="service-img" />
                     </div>
                     <div class="service-info">
                         <h2 class="service-title">Painting</h2>
@@ -74,4 +83,44 @@
 
 
 
+<script>
+// Mobile Hamburger Overlay Logic
+const menuToggle = document.querySelector('.menu-toggle');
+const overlay = document.getElementById('mobileMenuOverlay');
+const body = document.body;
+const menuLinks = overlay.querySelectorAll('a');
+
+function openMenu() {
+    overlay.classList.add('active');
+    body.classList.add('menu-fade');
+}
+function closeMenu() {
+    overlay.classList.remove('active');
+    body.classList.remove('menu-fade');
+    menuToggle.checked = false;
+}
+
+if (menuToggle && overlay) {
+    menuToggle.addEventListener('change', function() {
+        if (this.checked) {
+            openMenu();
+        } else {
+            closeMenu();
+        }
+    });
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeMenu();
+    });
+    menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+}
+</script>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <h2>Contact</h2>
+            <div class="footer-contact">
+                <div>Email: <a href="mailto:info@business.com">info@business.com</a></div>
+                <div>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></div>
+            </div>
+        </div>
+    </footer>
 </html>
