@@ -6,20 +6,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Generic Website</title>
-  <link rel="stylesheet" href="review_style.css">
+  <link rel="stylesheet" href="styles.css">
   <script src="jquery-3.7.1.min.js"></script>   
 </head>
 
-<h1>Our Customer Reviews</h1>
+<body class="review-body">
+	<header>
+		<nav class="navbar">
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="logo-container">
+                <!-- Replace 'logo.png' with your actual logo file in the Images folder -->
+                <img src="Images/logo.png" alt="Logo" class="navbar-logo" />
+            </div>
+            <ul class="nav-links">
+				<li><a href ="index.html">Home</a></li>
+                <li><a href="products.html">Services</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+        </nav>
 
-<body>
+	<h1 class="review-h1">Featured Reviews</h1>
 
-    <div class="navbar">
-        <div class="navbar-links">
-            <a>Home</a>
-        </div>
-    </div>
+	</header>
 
+		<!-- Mobile Menu Overlay -->
+		<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+			<div class="mobile-menu-links">
+				<a href="index.html">Home</a>
+				<a href="products.html">Services</a>
+				<a href="reviews.html">Reviews</a>
+			</div>
+		</div>
+
+    
 
   <div class="wrapper">
 		<div class="review-card">
@@ -35,10 +59,10 @@
 			<div class="review-footer">
 				<div class="rating">
 					<span class="active">★</span> 
-          <span class="active">★</span> 
-          <span class="active">★</span> 
-          <span class="">★</span> 
-          <span class="">★</span>
+          			<span class="active">★</span> 
+          			<span class="active">★</span> 
+          			<span class="">★</span> 
+          			<span class="">★</span>
 				</div>
 				<p>Reviewed on 01/01/2023</p>
 			</div>
@@ -56,10 +80,10 @@
 			<div class="review-footer">
 				<div class="rating">
 					<span class="active">★</span> 
-          <span class="active">★</span> 
-          <span class="">★</span> 
-          <span class="">★</span> 
-          <span class="">★</span>
+          			<span class="active">★</span> 
+          			<span class="">★</span> 
+          			<span class="">★</span> 
+          			<span class="">★</span>
 				</div>
 				<p>Reviewed on 01/02/2023</p>
 			</div>
@@ -77,18 +101,121 @@
 			<div class="review-footer">
 				<div class="rating">
 					<span class="active">★</span> 
-          <span class="active">★</span> 
-          <span class="active">★</span> 
-          <span class="active">★</span> 
-          <span class="active">★</span>
+          			<span class="active">★</span> 
+          			<span class="active">★</span> 
+          			<span class="active">★</span> 
+          			<span class="active">★</span>
 				</div>
 				<p>Reviewed on 01/03/2023</p>
 			</div>
 		</div>
 	</div>
 
+  <div class="button-container">
+  	<button class="see-more-btn" onclick="toggleReviews()">See More Reviews</button>
+  </div>
 
-    
+  <div class="more-reviews" id="moreReviews">
+    <div class="review-item">
+      <div class="rating">
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span>
+	  </div>
+      Excellent quality and fast delivery.
+	  <h4>- Emily W.</h4>
+    </div>
+    <div class="review-item">
+      <div class="rating">
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span>
+	  </div>
+      I've been a customer for years, always great.
+	  <h4>- Sarah L.</h4>
+    </div>
+    <div class="review-item">
+      <div class="rating">
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="">★</span>
+	  </div>
+      Good service, could improve packaging.
+	  <h4>- Mike T.</h4>
+    </div>
+    <div class="review-item">
+      <div class="rating">
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="">★</span>
+	  </div>
+      Loved it, will recommend to friends.
+	  <h4>- Anna K.</h4>
+    </div>
+    <div class="review-item">
+      <div class="rating">
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span> 
+		<span class="active">★</span>
+	  </div>
+      Best business in town!
+	  <h4>- Tom R.</h4>
+    </div>
+  </div>
+
+	<script src="JavaScript/review-button.js"></script>
+	<script>
+	// Mobile Hamburger Overlay Logic
+	const menuToggle = document.querySelector('.menu-toggle');
+	const overlay = document.getElementById('mobileMenuOverlay');
+	const body = document.body;
+	const menuLinks = overlay.querySelectorAll('a');
+
+	function openMenu() {
+		overlay.classList.add('active');
+		body.classList.add('menu-fade');
+	}
+	function closeMenu() {
+		overlay.classList.remove('active');
+		body.classList.remove('menu-fade');
+		menuToggle.checked = false;
+	}
+
+	if (menuToggle && overlay) {
+		menuToggle.addEventListener('change', function() {
+			if (this.checked) {
+				openMenu();
+			} else {
+				closeMenu();
+			}
+		});
+		overlay.addEventListener('click', function(e) {
+			if (e.target === overlay) closeMenu();
+		});
+		menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+	}
+	</script>
+
+
+	<footer class="site-footer">
+		<div class="footer-content">
+			<h2>Contact</h2>
+			<div class="footer-contact">
+				<div>Email: <a href="mailto:info@business.com">info@business.com</a></div>
+				<div>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></div>
+			</div>
+		</div>
+	</footer>
 </body>
 
 
